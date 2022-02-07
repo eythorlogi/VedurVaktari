@@ -1,0 +1,91 @@
+{
+  "alert": {
+    "@xmlns": "urn:oasis:names:tc:emergency:cap:1.2",
+    "identifier": "is-IMO-ad304c74-55e8-43e7-bd91-21af8cb7e715",
+    "sender": "IMO-Icelandic_Met_Office",
+    "sent": "2022-02-03T08:42:35+00:00",
+    "status": "Actual",
+    "msgType": "Alert",
+    "scope": "Public",
+    "info": [
+      {
+        "language": "is-IS",
+        "category": "Met",
+        "event": "Veðurviðvörun: Hríð",
+        "responseType": "None",
+        "urgency": "Unknown",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "eventCode": {
+          "valueName": "alertType",
+          "value": "Snow storm"
+        },
+        "onset": "2022-02-03T21:00:00+00:00",
+        "expires": "2022-02-04T10:00:00+00:00",
+        "senderName": "IMO - Meteorologist on duty",
+        "headline": "Norðvestan hvassviðri eða stormur",
+        "description": "Norðvestan hvassviðri eða stormur 18-25 m/s, hvassast sunnantil með hvössum vindhviðum við fjöll. Einnig má búast við dálitlum éljum og skafrenningi með lélegu skyggni",
+        "web": "http://www.vedur.is/#spasvaedi=af",
+        "contact": "None",
+        "parameter": {
+          "valueName": "Color",
+          "value": "Yellow"
+        },
+        "resource": {
+          "resourceDesc": "Icon: Snjó Stormur",
+          "mimeType": "image/png",
+          "size": "19010",
+          "uri": "https://cdn.vedur.is/cap/v1/icons/yellow_wind_snow.png",
+          "digest": "eba317ed1a2f6f99d2a52473bba8a83264f68bbf"
+        },
+        "area": {
+          "areaDesc": "Austfirðir",
+          "polygon": "65.49,-13.55 65.34,-13.62 65.11,-13.44 64.84,-13.72 64.47,-14.35 64.59,-14.77 64.79,-14.59 65.4,-14.02 65.49,-13.55",
+          "geocode": {
+            "valueName": "Spásvæði",
+            "value": "Austfirðir"
+          }
+        }
+      },
+      {
+        "language": "en-US",
+        "category": "Met",
+        "event": "Weather Warning: Snow storm",
+        "responseType": "None",
+        "urgency": "Unknown",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "eventCode": {
+          "valueName": "alertType",
+          "value": "Snow storm"
+        },
+        "onset": "2022-02-03T21:00:00+00:00",
+        "expires": "2022-02-04T10:00:00+00:00",
+        "senderName": "IMO - Meteorologist on duty",
+        "headline": "Northwest gale or strong gale",
+        "description": "Northwest gale or strong gale 18-25 m/s, strongest wind in the south part with strong wind gusts near mountains. Scattered showers of snow and blowing snow can also be expected with poor visibility",
+        "web": "http://en.vedur.is/#forec_area=af",
+        "contact": "None",
+        "parameter": {
+          "valueName": "Color",
+          "value": "Yellow"
+        },
+        "resource": {
+          "resourceDesc": "Icon: Snow Storm",
+          "mimeType": "image/png",
+          "size": "19010",
+          "uri": "https://cdn.vedur.is/cap/v1/icons/yellow_wind_snow.png",
+          "digest": "eba317ed1a2f6f99d2a52473bba8a83264f68bbf"
+        },
+        "area": {
+          "areaDesc": "Eastfjords",
+          "polygon": "65.49,-13.55 65.34,-13.62 65.11,-13.44 64.84,-13.72 64.47,-14.35 64.59,-14.77 64.79,-14.59 65.4,-14.02 65.49,-13.55",
+          "geocode": {
+            "valueName": "Forecast Region",
+            "value": "Eastfjords"
+          }
+        }
+      }
+    ]
+  }
+}
