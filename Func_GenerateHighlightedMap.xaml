@@ -1,14 +1,14 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Func_GenerateHighlightedMap" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_WarningDetailsJSArray" Type="InArgument(njl:JArray)" />
+    <x:Property Name="in_WarningsToSendDic" Type="InArgument(scg:Dictionary(x:String, njl:JArray))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1486,1252</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1387,1443</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Func_GenerateHighlightedMap_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="58">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -46,7 +46,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,20 +78,21 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Func_GenerateHighlightedMap" sap:VirtualizedContainerService.HintSize="563,1187" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Func_GenerateHighlightedMap" sap:VirtualizedContainerService.HintSize="478,1378" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PolygonStringForAPI" />
       <Variable x:TypeArguments="x:String" Name="ColorOfHighlightedArea" />
       <Variable x:TypeArguments="x:String" Name="APIImageURL" />
       <Variable x:TypeArguments="x:String" Name="GoogleAPIKey" />
       <Variable x:TypeArguments="x:String" Default="64.47,-14.35 64.21,-14.95 64.17,-15.66 63.98,-16.24 63.76,-16.61 63.7,-17.61 63.41,-18.1 63.37,-18.74 63.38,-19.1 63.53,-19.1 63.54,-18.77 64.19,-18.04 64.26,-17.82 64.3,-16.71 64.4,-15.8 64.59,-14.77 64.47,-14.35" Name="PolygonString" />
+      <Variable x:TypeArguments="x:String" Name="AreaStringForAPI" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="521,230" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -110,64 +111,105 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <Assign DisplayName="Assign PolygonString" sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[PolygonString]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_WarningDetailsJSArray(1).Item("area").Item("polygon").ToString]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap2010:Annotation.AnnotationText="Varpa polygon hnitum úr xx.xx,yy.yy xx.xx,yy.yy í xx.xx,yy.yy|xx.xx,yy.yy" DisplayName="Assign PolygonStringForAPI" sap:VirtualizedContainerService.HintSize="521,102" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[PolygonStringForAPI]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[PolygonString.Replace(" ","|").Trim]</InArgument>
-      </Assign.Value>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </Assign>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_WarningDetailsJSArray(1).Item(&quot;parameter&quot;).Item(&quot;value&quot;).ToString.ToLower]" sap:VirtualizedContainerService.HintSize="521,286" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-      <Switch.Default>
-        <Assign DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">0xFFFF0088</InArgument>
-          </Assign.Value>
-        </Assign>
-      </Switch.Default>
-      <Assign x:Key="yellow" DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">0xFFFF0088</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign x:Key="red" DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">0xff000033</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign x:Key="orange" DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">0xff800033</InArgument>
-        </Assign.Value>
-      </Assign>
-    </Switch>
-    <Assign DisplayName="Assign GoogleAPIKey" sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:ForEach x:TypeArguments="njl:JArray" CurrentIndex="{x:Null}" DisplayName="For Each Warning" sap:VirtualizedContainerService.HintSize="436,719" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_WarningsToSendDic.Values]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="njl:JArray">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="njl:JArray" Name="Warning" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,585" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="WarningColor" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign WarningColor" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[WarningColor]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Warning(1).Item("parameter").Item("value").ToString.ToLower]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Switch x:TypeArguments="x:String" DisplayName="Switch WarningColor" Expression="[WarningColor]" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+              <Switch.Default>
+                <Assign DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">0xFFFF0088</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Switch.Default>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign x:Key="yellow" DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">0xFFFF0088</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign x:Key="red" DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">0xff000033</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign x:Key="orange" DisplayName="Assign ColorOfHighlightedArea" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[ColorOfHighlightedArea]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">0xff800033</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Switch>
+            <Assign DisplayName="Assign PolygonString" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[PolygonString]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Warning(1).Item("area").Item("polygon").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:Annotation.AnnotationText="Varpa polygon hnitum úr xx.xx,yy.yy xx.xx,yy.yy í xx.xx,yy.yy|xx.xx,yy.yy" DisplayName="Assign PolygonStringForAPI" sap:VirtualizedContainerService.HintSize="262,102" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[PolygonStringForAPI]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[PolygonString.Replace(" ","|").Trim]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <Assign DisplayName="Assign AreaStringForAPI" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[AreaStringForAPI]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[AreaStringForAPI+string.Format("&amp;path=color:{0}|weight:5|fillcolor:{0}|{1}",ColorOfHighlightedArea,PolygonStringForAPI)]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <Assign DisplayName="Assign GoogleAPIKey" sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[GoogleAPIKey]</OutArgument>
       </Assign.To>
@@ -175,15 +217,15 @@
         <InArgument x:TypeArguments="x:String">AIzaSyB8DDaNQnicsbbOGInp1dGtMIixklf2z44</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign APIImageURL" sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Assign APIImageURL" sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[APIImageURL]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[string.Format("https://maps.googleapis.com/maps/api/staticmap?center=64.9631,-19.0208&amp;zoom=6&amp;size=1200x800&amp;path=color:0x00000000|weight:5|fillcolor:{0}|{1}&amp;key={2}",ColorOfHighlightedArea,PolygonStringForAPI,GoogleAPIKey)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[string.Format("https://maps.googleapis.com/maps/api/staticmap?center=64.9631,-19.0208&amp;zoom=6&amp;size=1200x800{0}&amp;key={1}",AreaStringForAPI,GoogleAPIKey)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" AcceptFormat="CUSTOM" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[APIImageURL]" sap:VirtualizedContainerService.HintSize="521,57" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" Password="[Nothing]" ResourcePath="C:\Users\eytho\Documents\UiPath\VedurVaktari\Data\Output\map.png" TimeoutMS="6000" Username="[Nothing]">
+    <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" AcceptFormat="CUSTOM" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[APIImageURL]" sap:VirtualizedContainerService.HintSize="436,57" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" Password="[Nothing]" ResourcePath="C:\Users\eytho\Documents\UiPath\VedurVaktari\Data\Temp\map.png" TimeoutMS="6000" Username="[Nothing]">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>

@@ -1,0 +1,80 @@
+[
+  {
+    "language": "is-IS",
+    "category": "Met",
+    "event": "Veðurviðvörun: Hríð",
+    "responseType": "None",
+    "urgency": "Unknown",
+    "severity": "Moderate",
+    "certainty": "Observed",
+    "eventCode": {
+      "valueName": "alertType",
+      "value": "Snow storm"
+    },
+    "onset": "2022-02-14T08:00:00+00:00",
+    "expires": "2022-02-14T15:00:00+00:00",
+    "senderName": "IMO - Meteorologist on duty",
+    "headline": "Suðaustan hríð og skafrenningur",
+    "description": "Suðaustan 8-15 m/s, snjókoma og talsverður skafrenningur. Viðbúið að dragi víða í skafla og færð spillist.",
+    "web": "http://www.vedur.is/#spasvaedi=ho",
+    "contact": "None",
+    "parameter": {
+      "valueName": "Color",
+      "value": "Yellow"
+    },
+    "resource": {
+      "resourceDesc": "Icon: Snjó Stormur",
+      "mimeType": "image/png",
+      "size": "19010",
+      "uri": "https://cdn.vedur.is/cap/v1/icons/yellow_wind_snow.png",
+      "digest": "eba317ed1a2f6f99d2a52473bba8a83264f68bbf"
+    },
+    "area": {
+      "areaDesc": "Höfuðborgarsvæðið",
+      "polygon": "64.17,-22.04 64.19,-21.7 64.15,-21.68 64.09,-21.78 64.05,-21.93 64.04,-22.04 64.09,-22.07 64.17,-22.04",
+      "geocode": {
+        "valueName": "Spásvæði",
+        "value": "Höfuðborgarsvæðið"
+      }
+    }
+  },
+  {
+    "language": "en-US",
+    "category": "Met",
+    "event": "Weather Warning: Snow storm",
+    "responseType": "None",
+    "urgency": "Unknown",
+    "severity": "Moderate",
+    "certainty": "Observed",
+    "eventCode": {
+      "valueName": "alertType",
+      "value": "Snow storm"
+    },
+    "onset": "2022-02-14T08:00:00+00:00",
+    "expires": "2022-02-14T15:00:00+00:00",
+    "senderName": "IMO - Meteorologist on duty",
+    "headline": "Southeast 8-15 m/s and snow and blowing snow",
+    "description": "Southeast 8-15 m/s with snow and blowing snow. Blizzard conditions and poor driving conditions.",
+    "web": "http://en.vedur.is/#forec_area=ho",
+    "contact": "None",
+    "parameter": {
+      "valueName": "Color",
+      "value": "Yellow"
+    },
+    "resource": {
+      "resourceDesc": "Icon: Snow Storm",
+      "mimeType": "image/png",
+      "size": "19010",
+      "uri": "https://cdn.vedur.is/cap/v1/icons/yellow_wind_snow.png",
+      "digest": "eba317ed1a2f6f99d2a52473bba8a83264f68bbf"
+    },
+    "area": {
+      "areaDesc": "Reykjavik - Capital Region",
+      "polygon": "64.17,-22.04 64.19,-21.7 64.15,-21.68 64.09,-21.78 64.05,-21.93 64.04,-22.04 64.09,-22.07 64.17,-22.04",
+      "geocode": {
+        "valueName": "Forecast Region",
+        "value": "Reykjavik - Capital Region"
+      }
+    }
+  }
+]
